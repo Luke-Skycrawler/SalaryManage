@@ -6,7 +6,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QSqlRecord>
-
+#include <QTableWidget>
 class salarydetail : public QDialog
 {
     Q_OBJECT //使用信号与槽需要的宏
@@ -24,6 +24,7 @@ private:
     QLineEdit *pwdLEd;           //密码编辑行
     QPushButton *loginBtn;       //登录按钮
     QPushButton *exitBtn;        //退出按钮
+    QTableWidget *detail;
 };
 
 #endif 

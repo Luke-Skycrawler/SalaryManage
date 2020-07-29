@@ -23,6 +23,7 @@ SOURCES += \
     loginform.cpp \
     main.cpp \
     mainwindow.cpp \
+    model.cpp \
     modifypeople.cpp \
     salarydetail.cpp \
     workdays.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     kinds.h \
     loginform.h \
     mainwindow.h \
+    model.h \
     modifypeople.h \
     salarydetail.h \
     workdays.h \

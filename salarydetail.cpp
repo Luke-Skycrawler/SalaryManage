@@ -1,9 +1,11 @@
 #include "salarydetail.h"
 #include <QMessageBox>
-
+#include <QHeaderView>
+#include "model.h"
 salarydetail::salarydetail(QSqlRecord& record,QDialog *parent) :
     QDialog(parent)
 {
+    employee emp1(record);
     //设置窗体标题
     this->setWindowTitle(tr("工资明细"));
 
@@ -38,10 +40,18 @@ salarydetail::salarydetail(QSqlRecord& record,QDialog *parent) :
     exitBtn->move(170,200);
     exitBtn->setText("退出");
 
+    detail=new QTableWidget(this);
+    detail->setRowCount(4);
+    detail->setColumnCount(2);
+    detail->verticalHeader()->setVisible(false);
+    detail->horizontalHeader()->setVisible(false);
+    detail->move(60,240);
+
     //单击登录按钮时 执行 salarydetail::login 槽函数(自定义)；单击退出按钮时 执行 salarydetail::close 槽函数(窗体的关闭函数，不用自己写)
     connect(loginBtn,&QPushButton::clicked,this,&salarydetail::login);
     connect(exitBtn,&QPushButton::clicked,this,&salarydetail::close);
 
+    emp1.print_salary_detail(*detail);
 
 }
 
