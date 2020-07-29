@@ -5,7 +5,7 @@
 salarydetail::salarydetail(QSqlRecord& record,QDialog *parent) :
     QDialog(parent)
 {
-    employee emp1(record);
+    worker emp1(record);
     //设置窗体标题
     this->setWindowTitle(tr("工资明细"));
 

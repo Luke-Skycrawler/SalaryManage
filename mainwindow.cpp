@@ -96,7 +96,7 @@ void MainWindow::on_table_clicked(const QModelIndex &index){
     salarydetail *detailwindow=new salarydetail(record,NULL);
 
     detailwindow->show();
-    this->setWindowTitle(QString::number(index.row()));
+    //this->setWindowTitle(QString::number(index.row()));
 }
 void MainWindow::on_action_triggered()
 {

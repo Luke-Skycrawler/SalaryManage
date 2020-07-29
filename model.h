@@ -17,10 +17,9 @@ class employee{
         :id(id),name(name),dept(dept),wage(wage),phone(phone),sex(sex){
     }
     employee(QSqlRecord &record);
-    void print_salary_detail(QTableWidget &display);
-    // virtual float get_net_salary_total();
-    float salary_taxed();
-    
+    virtual void print_salary_detail(QTableWidget &display)=0;
+    virtual float get_net_salary_total()=0;
+    //virtual float salary_taxed();
 };
 class management:public employee{
     public:
@@ -29,7 +28,9 @@ class management:public employee{
         
     }
     management(QSqlRecord &record);
-    // float get_net_salary_total();
+    float get_net_salary_total();
+    virtual void print_salary_detail(QTableWidget &display);
+    //virtual float salary_taxed();
     private:
     float bonus,motivation;
 };
@@ -37,7 +38,9 @@ class tech:public employee{
     public:
     tech(QString &id,QString &name,QString &dept,char sex,QString &phone,float wage=0)
         :employee(id,name,dept,sex,phone,wage){}
-    // float get_net_salary_total();
+    float get_net_salary_total();
+    virtual void print_salary_detail(QTableWidget &display);
+    //virtual float salary_taxed();
     tech(QSqlRecord &record);
     private:
     float skill,bonus,project_budget;
@@ -46,7 +49,9 @@ class sales:public employee{
     public:
     sales(QString &id,QString &name,QString &dept,char sex,QString &phone,float wage=0)
         :employee(id,name,dept,sex,phone,wage){}
-    // float get_net_salary_total();
+    float get_net_salary_total();
+    virtual void print_salary_detail(QTableWidget &display);
+    //virtual float salary_taxed();
     sales(QSqlRecord &record);
     private:
     float bonus,sales_compensation;
@@ -55,7 +60,9 @@ class sales:public employee{
 class worker:public employee{
     public:
     worker(QSqlRecord &record);
-    // float get_net_salary_total();
+    float get_net_salary_total();
+    virtual void print_salary_detail(QTableWidget &display);
+    //virtual float salary_taxed();
     worker(QString &id,QString &name,QString &dept,char sex,QString &phone,float wage=0)
         :employee(id,name,dept,sex,phone,wage){}
     private:
