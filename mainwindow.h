@@ -57,6 +57,7 @@ private:
 
     // void setTitle(const QModelIndex &current, const QModelIndex &previous);
     void on_table_clicked(const QModelIndex &index);
+    QSqlTableModel *model;
 };
 
 #endif // MAINFORM_H

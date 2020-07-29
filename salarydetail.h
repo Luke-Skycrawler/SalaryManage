@@ -5,13 +5,13 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-
+#include <QSqlRecord>
 
 class salarydetail : public QDialog
 {
     Q_OBJECT //使用信号与槽需要的宏
 public:
-    explicit salarydetail(QDialog *parent = 0);  //explicit 防止歧义
+    explicit salarydetail(QSqlRecord& record,QDialog *parent = 0);  //explicit 防止歧义
 
 signals:
 

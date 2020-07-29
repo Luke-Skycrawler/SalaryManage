@@ -1,7 +1,7 @@
 #include "salarydetail.h"
 #include <QMessageBox>
 
-salarydetail::salarydetail(QDialog *parent) :
+salarydetail::salarydetail(QSqlRecord& record,QDialog *parent) :
     QDialog(parent)
 {
     //设置窗体标题
@@ -15,17 +15,17 @@ salarydetail::salarydetail(QDialog *parent) :
     //用户名输入框
     userNameLEd = new QLineEdit(this);
     userNameLEd->move(120,80);
-    userNameLEd->setPlaceholderText(tr("请输入用户名!"));//占位符
+    userNameLEd->setPlaceholderText(record.value(0).toString());//占位符
 
     //密码Label
     pwdLbl = new QLabel(this);
     pwdLbl->move(80,130);
-    pwdLbl->setText("密码:");
+    pwdLbl->setText("salary:");
 
     //密码输入框
     pwdLEd = new QLineEdit(this);
     pwdLEd->move(120,130);
-    pwdLEd->setPlaceholderText("请输入密码!");
+    pwdLEd->setPlaceholderText(record.value("salary").toString());
     pwdLEd->setEchoMode(QLineEdit::Password);//输入的密码以圆点显示
 
     //登录按钮

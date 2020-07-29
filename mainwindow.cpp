@@ -11,7 +11,7 @@
 #include <QTableView>
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+    QMainWindow(parent),model(NULL),
     ui(new Ui::MainWindow)
 {
 
@@ -54,7 +54,8 @@ bool MainWindow::connectDatabase()
 
 void MainWindow::initTableView() {
     // 数据模型
-    QSqlTableModel *model = new QSqlTableModel;
+    model = new QSqlTableModel;
+
     model->setTable("information");
     // 按编号排序
     model->setSort(0, Qt::AscendingOrder);
@@ -90,7 +91,10 @@ void MainWindow::initTableView() {
 }
 void MainWindow::on_table_clicked(const QModelIndex &index){
     int row=index.row();
-    salarydetail *detailwindow=new salarydetail(NULL);
+
+    auto record=model->record(row);
+    salarydetail *detailwindow=new salarydetail(record,NULL);
+
     detailwindow->show();
     this->setWindowTitle(QString::number(index.row()));
 }
