@@ -24,6 +24,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     modifypeople.cpp \
+    salarydetail.cpp \
     workdays.cpp \
     workerquery.cpp
 
@@ -35,6 +36,7 @@ HEADERS += \
     loginform.h \
     mainwindow.h \
     modifypeople.h \
+    salarydetail.h \
     workdays.h \
     workerquery.h
 

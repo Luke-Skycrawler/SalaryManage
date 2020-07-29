@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "salarydetail.h"
 
 #include <QDebug>
 #include <QSqlDatabase>
@@ -79,8 +80,20 @@ void MainWindow::initTableView() {
     // 表头
     QHeaderView *header = view->horizontalHeader();
     header->setStretchLastSection(true);
-}
 
+    // connect(view->selectionModel(),
+    //         &QItemSelectionModel::currentRowChanged,
+    //         this,
+    //         &MainWindow::setTitle
+    //         );
+   connect(view,&QTableView::doubleClicked,this,&MainWindow::on_table_clicked);
+}
+void MainWindow::on_table_clicked(const QModelIndex &index){
+    int row=index.row();
+    salarydetail *detailwindow=new salarydetail(NULL);
+    detailwindow->show();
+    this->setWindowTitle(QString::number(index.row()));
+}
 void MainWindow::on_action_triggered()
 {
     dlgKinds = new kinds(this);
